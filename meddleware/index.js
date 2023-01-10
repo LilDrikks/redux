@@ -1,18 +1,16 @@
-// Organize o código em diferentes arquivos com type module
+import store from "./store/configureStore.js";
+import fetchToken from "./store/requests/fetchToken.js";
+import fetchUser from "./store/requests/fetchUser.js";
 
-import store from "./configureStore.js";
-// Crie 2 reducers, token e user *
+const login = async (user) => {
+  let state = store.getState();
+  if (state.token.data === null) {
+    await store.dispatch(fetchToken(user));
+  }
+  state = store.getState();
+  await store.dispatch(fetchUser(state.token.data));
+  state = store.getState();
+};
 
-// Ações:
+login({ username: "dog", password: "dog" });
 
-// token/FETCH_STARTED, token/FETCH_SUCCESS, token/FETCH_ERROR *
-
-// user/FETCH_STARTED, user/FETCH_SUCCESS, user/FETCH_ERROR *
-
-// Crie constantes e action creators para cada ação * 
-
-// Crie middlewares: Thunk e localStorage
-// Com a api do curso de React, puxe o token:
-// o user pode ser { username: 'dog', password: 'dog' }
-
-console.log(store.getState());
