@@ -1,6 +1,21 @@
 import store from "./store/configureStore.js";
+
 import fetchToken from "./store/requests/fetchToken.js";
 import fetchUser from "./store/requests/fetchUser.js";
+
+
+const loginInput = document.querySelector('#login')
+const passwordInput = document.querySelector('#password')
+const btnLogin = document.querySelector('#btnLogin')
+
+
+
+const handleLogin = (e) => {
+  e.preventDefault()
+  const loginValue = loginInput.value
+  const passwordValue = passwordInput.value
+  login({ username: loginValue, password: passwordValue }); 
+}
 
 const login = async (user) => {
   let state = store.getState();
@@ -12,5 +27,9 @@ const login = async (user) => {
   state = store.getState();
 };
 
-login({ username: "dog", password: "dog" });
+btnLogin.addEventListener('click', handleLogin)
+
+
+
+
 

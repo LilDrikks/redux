@@ -9,15 +9,45 @@
   <script src="/redux.js"></script>
   <script src="/immer.umd.production.min.js"></script>
   <style>
+    html{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     body {
       background-color: rgb(100, 99, 99);
       color: white;
+    }
+    form{
+      margin: 0;
+      gap: 20px;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+    }
+    #login, #password{
+      height: 40px;
+      width: 240px;
     }
   </style>
 </head>
 
 <body>
-  <div id="content"></div>
+  <div id="content">
+    <form action="">
+      <label for="login">Login</label>
+      <input id="login" type="text" />
+      <label for="password">Password</label>
+      <input id="password" type="password" />
+      <button id="btnLogin">Entrar</button>
+    </form>
+  </div>
 
   <script type="module" src="./meddleware/index.js">
     
