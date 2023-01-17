@@ -15,7 +15,7 @@ const fetchToken = (body) => async (dispatch) => {
     );
     const { token } = await response.json();
     dispatch(tokenSuccess(token));
-    window.location.reload(true)
+    
   } catch (error) {
     dispatch(tokenError(error.message));
   }
